@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
+import { ServicesComponent } from './pages/services/services.component';
+import { ProductsComponent } from './pages/products/products.component';
+import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
   {
@@ -16,17 +19,22 @@ const routes: Routes = [
   {
     path: 'services',
     runGuardsAndResolvers: 'always',
-    component: AppComponent
+    component: ServicesComponent
   },
   {
     path: 'products',
     runGuardsAndResolvers: 'always',
-    component: AppComponent
+    component: ProductsComponent
   },
   {
     path: 'login',
     runGuardsAndResolvers: 'always',
-    component: AppComponent
+    component: LoginComponent
+  },
+  {
+    path: 'register',
+    runGuardsAndResolvers: 'always',
+    component: LoginComponent
   },
 ];
 
