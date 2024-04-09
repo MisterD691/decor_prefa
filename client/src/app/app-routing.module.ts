@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { ServicesComponent } from './pages/services/services.component';
-import { ProductsComponent } from './pages/products/products.component';
 import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 const routes: Routes = [
   {
@@ -22,11 +22,6 @@ const routes: Routes = [
     component: ServicesComponent
   },
   {
-    path: 'products',
-    runGuardsAndResolvers: 'always',
-    component: ProductsComponent
-  },
-  {
     path: 'login',
     runGuardsAndResolvers: 'always',
     component: LoginComponent
@@ -34,8 +29,13 @@ const routes: Routes = [
   {
     path: 'register',
     runGuardsAndResolvers: 'always',
-    component: LoginComponent
+    component: RegisterComponent
   },
+  // {
+  //   path: 'products',
+  //   runGuardsAndResolvers: 'always',
+  //   component: ProductsComponent
+  // },
 ];
 
 @NgModule({
