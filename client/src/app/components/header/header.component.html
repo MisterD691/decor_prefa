@@ -1,7 +1,25 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-4"></div>
-    <div class="col-7"></div>
+<div class="container-fluid px-5 py-5 gradient text-white">
+  <div class="row mb-5">
+    <div class="col-6 d-flex align-items-center">
+      <img src="assets/images/logo.png" alt="" class="logo_app rounded-circle mr-3">
+      <h2><strong>Decor prefa</strong></h2>
+    </div>
+    <div class="col-5 d-flex align-items-center justify-content-around">
+      <a class="text-white" routerLink="/home"><span>Accueil</span></a>
+      <a class="text-white" routerLink="/services"><span>Nos services</span></a>
+      <a class="text-white" routerLink="/products"><span>Nos produits</span></a>
+      <a class="text-white" routerLink="/contact"><span>Contact</span></a>
+      <button type="button" class="btn bck-secondary text-white">Connexion</button>
+    </div>
   </div>
-  <div class="row" *ngIf="isBig"></div>
+  <div class="row" *ngIf="isBig">
+    <div class="col-10 offset-1 d-flex justify-content-around align-items-center row">
+      <div class="col-5">
+        <h3 class="mb-3">{{title}}</h3>
+        <p class="mb-4">{{content}}</p>
+        <button type="button" class="btn bck-secondary text-white">Connexion</button>
+      </div>
+      <img src="assets/images/logo.png" alt="Logo entreprise" class="rounded-circle img">
+    </div>
+  </div>
 </div>

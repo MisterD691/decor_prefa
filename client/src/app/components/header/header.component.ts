@@ -6,7 +6,9 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  @Input() isBig: boolean = true;
+  @Input() public isBig: boolean = true;
+  @Input() public title: string = "";
+  @Input() public content: string = "";
 
   ngOnInit(): void {
     //

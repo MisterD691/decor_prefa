@@ -1,0 +1,13 @@
+.logo_app {
+  width: 100px;
+  height: 100px;
+}
+
+.gradient {
+  background: linear-gradient(180deg, rgba(30,10,42,1) 0%, rgba(88,32,128,1) 100%);
+}
+
+.img {
+  height: 400px;
+  width: 400px;
+}
