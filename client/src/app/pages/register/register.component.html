@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-6 body" style="background-image: url('assets/images/logo.png');background-size:cover;background-repeat: no-repeat;"></div>
     <div class="col-4 offset-1 d-flex align-items-center">
-      <form>
+      <form (submit)="register()">
         <div class="row">
           <div class="col-12 d-flex justify-content-center">
             <h1><strong>Bienvenue chez Decor Prefa</strong></h1>
@@ -12,13 +12,25 @@
             <h2 class="color-primary"><strong>Créer compte</strong></h2>
           </div>
           <div class="col-10 offset-1 mb-4">
-            <input type="email" class="form-control" placeholder="Email">
+            <input type="text" class="form-control" name="lastName" [(ngModel)]="newUser.lastName" placeholder="Nom">
           </div>
           <div class="col-10 offset-1 mb-4">
-            <input type="password" class="form-control" placeholder="Mot de passe">
+            <input type="text" class="form-control" name="firstName" [(ngModel)]="newUser.firstName" placeholder="Prenom">
           </div>
           <div class="col-10 offset-1 mb-4">
-            <input type="password" class="form-control" placeholder="Confirmation mot de passe">
+            <input type="text" class="form-control" name="phone" [(ngModel)]="newUser.phone" placeholder="Téléphone">
+          </div>
+          <div class="col-10 offset-1 mb-4">
+            <input type="text" class="form-control" name="address" [(ngModel)]="newUser.address" placeholder="Adresse">
+          </div>
+          <div class="col-10 offset-1 mb-4">
+            <input type="email" class="form-control" name="email" [(ngModel)]="newUser.email" placeholder="Email">
+          </div>
+          <div class="col-10 offset-1 mb-4">
+            <input type="password" class="form-control" name="password" [(ngModel)]="newUser.password" placeholder="Mot de passe">
+          </div>
+          <div class="col-10 offset-1 mb-4">
+            <input type="password" class="form-control" name="cPwd" [(ngModel)]="cPwd" placeholder="Confirmation mot de passe">
           </div>
           <div class="col-10 offset-1 mb-3 d-flex justify-content-end">
             <span class="color-primary">Vous avez déjà un compte ? &nbsp;</span>
@@ -36,3 +48,9 @@
     </div>
   </div>
 </div>
+
+<ngx-loading
+    [show]="loading"
+    [config]="config"
+  >
+</ngx-loading>
