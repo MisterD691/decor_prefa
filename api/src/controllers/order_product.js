@@ -27,6 +27,32 @@ exports.getById = async (req, res) => {
   }
 }
 
+exports.getByClient = async (req, res) => {
+  try {
+    console.log("Request to get order_product by client...");
+    const result = await Order.find({ client: req.params.clientId })
+    .sort([['updatedAt', 'desc']])
+    .populate(["client"]).populate(["product"]).execPopulate();
+    return res.status(200).json(result);
+  } catch (e) {
+    console.log("Error: " + e);
+    return res.status(500).json(e);
+  }
+}
+
+exports.getByProduct = async (req, res) => {
+  try {
+    console.log("Request to get order_product by product...");
+    const result = await Order.find({ product: req.params.productId })
+    .sort([['updatedAt', 'desc']])
+    .populate(["client"]).populate(["product"]).execPopulate();
+    return res.status(200).json(result);
+  } catch (e) {
+    console.log("Error: " + e);
+    return res.status(500).json(e);
+  }
+}
+
 exports.getAll = async (req, res) => {
   try {
     console.log("Request to get all order_products...");

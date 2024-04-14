@@ -1,8 +1,8 @@
 const Category = require("../models/category");
 
-exports.create = async (req, res) => {
+exports.add = async (req, res) => {
   try {
-    console.log("Request to create category...");
+    console.log("Request to add category...");
     const data = filterCategory(req.body);
     const category = new Category(data);
     category.save().then(

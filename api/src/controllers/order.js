@@ -25,7 +25,8 @@ exports.add = async (req, res) => {
 exports.getById = async (req, res) => {
   try {
     console.log("Request to get order by Id...");
-    const result = await Order.findById(req.params.id).populate("client");
+    const result = await Order.findById(req.params.id)
+    .populate("client").execPopulate();
     return res.status(200).json(result);
   } catch (e) {
     console.log("Error: " + e);
@@ -37,7 +38,7 @@ exports.getByClient = async (req, res) => {
   try {
     console.log("Request to get order by client...");
     const result = await Order.find({ client: req.params.clientId })
-    .sort([['updatedAt', 'desc']]).populate("client");
+    .sort([['updatedAt', 'desc']]).populate("client").execPopulate();
     return res.status(200).json(result);
   } catch (e) {
     console.log("Error: " + e);
@@ -49,7 +50,7 @@ exports.getAll = async (req, res) => {
   try {
     console.log("Request to get all orders...");
     const result = await Order.find().sort([['updatedAt', 'desc']])
-    .populate("client");
+    .populate("client").execPopulate();
     return res.status(200).json(result);
   } catch (e) {
     console.log("Error: " + e);
