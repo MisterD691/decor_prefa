@@ -19,8 +19,7 @@ exports.add = async (req, res) => {
 exports.getById = async (req, res) => {
   try {
     console.log("Request to get product by Id...");
-    const result = await Product.findById(req.params.id)
-    .populate("category").execPopulate();
+    const result = await Product.findById(req.params.id).populate("category");
     return res.status(200).json(result);
   } catch (e) {
     return res.status(500).json(e);
@@ -31,7 +30,7 @@ exports.getByCategory = async (req, res) => {
   try {
     console.log("Request to get product by category...");
     const result = await Product.find({user: req.params.categoryId})
-    .populate("category").execPopulate();
+    .populate("category");
     return res.status(200).json(result);
   } catch (e) {
     console.log("Error: " + e);
@@ -42,7 +41,7 @@ exports.getByCategory = async (req, res) => {
 exports.getAll = async (req, res) => {
   try {
     console.log("Request to get all products...");
-    const result = await Product.find().populate("category").execPopulate();
+    const result = await Product.find().populate("category");
     return res.status(200).json(result);
   } catch (e) {
     console.log("Error: " + e);

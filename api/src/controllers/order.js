@@ -7,7 +7,7 @@ exports.add = async (req, res) => {
     const data = filterOrder(req.body);
     const order = new Order(data);
     order.save()
-    .then((doc) => doc.populate(["client"]).execPopulate()).then(
+    .then((doc) => doc.populate(["client"])).then(
       (doc) => {
         console.log(doc);
         return res.status(200).json(doc);
@@ -26,7 +26,7 @@ exports.getById = async (req, res) => {
   try {
     console.log("Request to get order by Id...");
     const result = await Order.findById(req.params.id)
-    .populate("client").execPopulate();
+    .populate("client");
     return res.status(200).json(result);
   } catch (e) {
     console.log("Error: " + e);
@@ -38,7 +38,7 @@ exports.getByClient = async (req, res) => {
   try {
     console.log("Request to get order by client...");
     const result = await Order.find({ client: req.params.clientId })
-    .sort([['updatedAt', 'desc']]).populate("client").execPopulate();
+    .sort([['updatedAt', 'desc']]).populate("client");
     return res.status(200).json(result);
   } catch (e) {
     console.log("Error: " + e);
@@ -50,7 +50,7 @@ exports.getAll = async (req, res) => {
   try {
     console.log("Request to get all orders...");
     const result = await Order.find().sort([['updatedAt', 'desc']])
-    .populate("client").execPopulate();
+    .populate("client");
     return res.status(200).json(result);
   } catch (e) {
     console.log("Error: " + e);
@@ -98,7 +98,7 @@ exports.accept = async (req, res) => {
     if (order.responded == false) { // Order not responded
       order.responded = true;
       order.response = true;
-      order.save().then((doc) => doc.populate(["client"]).execPopulate())
+      order.save().then((doc) => doc.populate(["client"]))
       .then(
         (doc) => res.status(200).json(doc),
         (reason) => {
@@ -122,7 +122,7 @@ exports.reject = async (req, res) => {
     if (order.responded == false) { // Order not responded
       order.responded = true;
       order.response = false;
-      order.save().then((doc) => doc.populate(["client"]).execPopulate())
+      order.save().then((doc) => doc.populate(["client"]))
       .then(
         (doc) => res.status(200).json(doc),
         (reason) => {

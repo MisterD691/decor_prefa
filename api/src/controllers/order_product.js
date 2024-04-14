@@ -20,7 +20,7 @@ exports.getById = async (req, res) => {
   try {
     console.log("Request to get order_product by Id...");
     const result = await OrderProduct.findById(req.params.id)
-    .populate(["client"]).populate(["product"]).execPopulate();
+    .populate(["client"]).populate(["product"]);
     return res.status(200).json(result);
   } catch (e) {
     return res.status(500).json(e);
@@ -32,7 +32,7 @@ exports.getByClient = async (req, res) => {
     console.log("Request to get order_product by client...");
     const result = await Order.find({ client: req.params.clientId })
     .sort([['updatedAt', 'desc']])
-    .populate(["client"]).populate(["product"]).execPopulate();
+    .populate(["client"]).populate(["product"]);
     return res.status(200).json(result);
   } catch (e) {
     console.log("Error: " + e);
@@ -45,7 +45,7 @@ exports.getByProduct = async (req, res) => {
     console.log("Request to get order_product by product...");
     const result = await Order.find({ product: req.params.productId })
     .sort([['updatedAt', 'desc']])
-    .populate(["client"]).populate(["product"]).execPopulate();
+    .populate(["client"]).populate(["product"]);
     return res.status(200).json(result);
   } catch (e) {
     console.log("Error: " + e);
@@ -57,7 +57,7 @@ exports.getAll = async (req, res) => {
   try {
     console.log("Request to get all order_products...");
     const result = await OrderProduct.find()
-    .populate(["client"]).populate(["product"]).execPopulate();;
+    .populate(["client"]).populate(["product"]);
     return res.status(200).json(result);
   } catch (e) {
     return res.status(500).json(e);
