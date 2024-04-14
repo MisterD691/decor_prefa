@@ -31,11 +31,13 @@ const routes: Routes = [
     runGuardsAndResolvers: 'always',
     component: RegisterComponent
   },
-  // {
-  //   path: 'products',
-  //   runGuardsAndResolvers: 'always',
-  //   component: ProductsComponent
-  // },
+  {
+    path: 'products',
+    runGuardsAndResolvers: 'always',
+    loadChildren: () => import('./pages/products/products.module').then(
+      (m) => m.ProductsModule
+    )
+  },
 ];
 
 @NgModule({

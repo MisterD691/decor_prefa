@@ -4,6 +4,9 @@ import { ProductsComponent } from './products.component';
 import { CartComponent } from './cart/cart.component';
 import { ProductFormComponent } from './product-form/product-form.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { ComponentsModule } from 'src/app/components/components.module';
+import { ProductListComponent } from './product-list/product-list.component';
+import { ProductRoutingModule } from './product-routing.module';
 
 
 
@@ -12,10 +15,13 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
     ProductsComponent,
     CartComponent,
     ProductFormComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    ProductListComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ComponentsModule,
+    ProductRoutingModule
   ]
 })
 export class ProductsModule { }
