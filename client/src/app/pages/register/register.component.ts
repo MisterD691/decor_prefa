@@ -38,6 +38,7 @@ export class RegisterComponent implements OnInit {
   ) {}
 
   public initUser(): void {
+    this.cPwd = "";
     this.newUser = {
       firstName: "",
       lastName: "",
