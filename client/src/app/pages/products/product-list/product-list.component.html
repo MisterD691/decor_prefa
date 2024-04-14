@@ -1,5 +1,37 @@
 <div class="body">
   <app-header [isBig]="false"></app-header>
-  <p>product-list works!</p>
+  
+  <div class="container-fluid bg-grey py-5 body">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-10">
+          <input type="text" class="form-control" placeholder="Rechercher">
+        </div>
+        <div class="col-2">
+          <button class="btn btn-success" routerLink="/products/form">Ajouter</button>
+        </div>
+      </div>
+      
+      <!-- Trainings -->
+      <h3 class="mb-2"><strong>Formations</strong></h3>
+      <div class="divider mb-4"></div>
+      <div class="row">
+        <div class="col-4" *ngFor="let p of [1,1,1,1,1]">
+          <div class="card mb-4 shadow">
+            <img class="card-img-top" src="assets/images/logo.png" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Titre</h5>
+              <p class="card-text">p.description</p>
+              <div class="d-flex justify-content-between mb-3">
+                <a href="#" class="btn btn-success">Ajouter au panier</a>
+                <strong> p.price FCFA</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
 <app-footer></app-footer>
