@@ -1,7 +1,7 @@
 {
-  "name": "it-report.core",
+  "name": "decor_prefa",
   "version": "1.0.0",
-  "description": "This is the server side component of a report making application.We will be developing the rest apis of the project",
+  "description": "This is the server side of decor prefa project",
   "main": "index.js",
   "scripts": {
     "start": "node ./index.js ",

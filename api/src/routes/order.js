@@ -10,7 +10,7 @@ const {
   remove,
   accept,
   reject
-} = require("../controllers/request");
+} = require("../controllers/order");
 
 router.post("/add", add);
 router.get("/getById/:id", getById);
