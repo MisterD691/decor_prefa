@@ -3,13 +3,22 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { User } from './user';
 import { Response } from '../response';
+import { LocalStorage } from 'src/app/core/local-storage.service';
+import { AuthService } from 'src/app/core/auth/auth.service';
+import { asyncScheduler, scheduled } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor(protected http: HttpClient) { }
+  constructor(
+    protected http: HttpClient,
+    protected auth: AuthService,
+    protected localStorage: LocalStorage,
+    protected user: UserService,
+    
+    ) { }
 
   signUp(data: any) {
     return this.http.post<Response>(`${environment.apiUrl}/v1/user/signUp`, data);
@@ -33,6 +42,19 @@ export class UserService {
 
   remove(id: any) {
     return this.http.delete<Response>(`${environment.apiUrl}/user/delete/${id}`);
+  }
+
+  // setDataAndRedirect(resData: any) {
+  //   const userId = resData.user.id;
+  //   this.user.getById(userId).subscribe((resp) => {
+      
+  //   });
+  // }
+
+  logout() {
+    return scheduled([true], asyncScheduler).subscribe(() => {
+      return this.auth.disconnect();
+    });
   }
 
 }
