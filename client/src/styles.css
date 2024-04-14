@@ -33,7 +33,7 @@
   color: white;
 }
 
-.bck-primary:hover {
+a.bck-primary:hover, button.bck-primary:hover, input.bck-primary:hover {
   background-color: #5d2782;
   color: white;
 }
@@ -43,7 +43,7 @@
   color: white;
 }
 
-.bck-secondary:hover {
+a.bck-secondary:hover, button.bck-secondary:hover, input.bck-secondary:hover {
   background-color: #3c1557;
   color: white;
 }
