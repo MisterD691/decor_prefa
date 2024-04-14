@@ -6,7 +6,7 @@ exports.add = async (req, res) => {
     const data = filterProduct(req.body);
     const product = new Product(data);
     product.save(data).then(
-      (doc) => res.status(200).json(doc),
+      (doc) => res.status(200).json({datas: doc}),
       (reason) => {
         console.log(reason);
         res.status(400).json(reason);
@@ -20,7 +20,7 @@ exports.getById = async (req, res) => {
   try {
     console.log("Request to get product by Id...");
     const result = await Product.findById(req.params.id).populate("category");
-    return res.status(200).json(result);
+    return res.status(200).json({datas: result});
   } catch (e) {
     return res.status(500).json(e);
   }
@@ -31,7 +31,7 @@ exports.getByCategory = async (req, res) => {
     console.log("Request to get product by category...");
     const result = await Product.find({user: req.params.categoryId})
     .populate("category");
-    return res.status(200).json(result);
+    return res.status(200).json({datas: result});
   } catch (e) {
     console.log("Error: " + e);
     return res.status(500).json(e);
@@ -42,7 +42,7 @@ exports.getAll = async (req, res) => {
   try {
     console.log("Request to get all products...");
     const result = await Product.find().populate("category");
-    return res.status(200).json(result);
+    return res.status(200).json({datas: result});
   } catch (e) {
     console.log("Error: " + e);
     return res.status(500).json(e);
@@ -54,7 +54,7 @@ exports.update = async (req, res) => {
     console.log("Request to update product...");
     const data = filterProduct(req.body);
     Product.findOneAndUpdate({ _id: req.params.id }, data).then(
-      (doc) => res.status(200).json(doc),
+      (doc) => res.status(200).json({datas: doc}),
       (reason) => {
         console.log(reason);
         res.status(400).json(reason);
@@ -70,7 +70,7 @@ exports.remove = async (req, res) => {
   try {
     console.log("Request to delete product...");
     Product.deleteOne({ _id: req.params.id }).then(
-      (doc) => res.status(200).json(doc),
+      (doc) => res.status(200).json({datas: doc}),
       (reason) => {
         console.log(reason);
         res.status(400).json(reason);

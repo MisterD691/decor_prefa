@@ -6,7 +6,7 @@ exports.add = async (req, res) => {
     const data = filterCategory(req.body);
     const category = new Category(data);
     category.save().then(
-      (doc) => res.status(200).json(doc),
+      (doc) => res.status(200).json({datas: doc}),
       (reason) => {
         console.log(reason);
         res.status(400).json(reason);
@@ -21,7 +21,7 @@ exports.getById = async (req, res) => {
   try {
     console.log("Request to get category by Id...");
     const result = await Category.findById(req.params.id);
-    return res.status(200).json(result);
+    return res.status(200).json({datas: result});
   } catch (e) {
     console.log("Error: " + e);
     return res.status(500).json(e);
@@ -32,7 +32,7 @@ exports.getAll = async (req, res) => {
   try {
     console.log("Request to get all categorys...");
     const result = await Category.find();
-    return res.status(200).json(result);
+    return res.status(200).json({datas: result});
   } catch (e) {
     console.log("Error: " + e);
     return res.status(500).json(e);
@@ -44,7 +44,7 @@ exports.update = async (req, res) => {
     console.log("Request to update category...");
     const data = filterCategory(req.body);
     Category.findOneAndUpdate({ _id: req.params.id }, data).then(
-      (doc) => res.status(200).json(doc),
+      (doc) => res.status(200).json({datas: doc}),
       (reason) => {
         console.log(reason);
         res.status(400).json(reason);
@@ -60,7 +60,7 @@ exports.remove = async (req, res) => {
   try {
     console.log("Request to delete category...");
     Category.deleteOne({ _id: req.params.id }).then(
-      (doc) => res.status(200).json(doc),
+      (doc) => res.status(200).json({datas: doc}),
       (reason) => {
         console.log(reason);
         res.status(400).json(reason);

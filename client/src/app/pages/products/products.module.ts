@@ -8,6 +8,7 @@ import { ComponentsModule } from 'src/app/components/components.module';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductRoutingModule } from './product-routing.module';
 import { FormsModule } from '@angular/forms';
+import { NgxLoadingModule } from 'ngx-loading';
 
 
 
@@ -23,7 +24,8 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     ComponentsModule,
     ProductRoutingModule,
-    FormsModule
+    FormsModule,
+    NgxLoadingModule.forRoot({})
   ]
 })
 export class ProductsModule { }
