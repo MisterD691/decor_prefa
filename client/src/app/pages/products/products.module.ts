@@ -7,6 +7,7 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { ComponentsModule } from 'src/app/components/components.module';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductRoutingModule } from './product-routing.module';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -21,7 +22,8 @@ import { ProductRoutingModule } from './product-routing.module';
   imports: [
     CommonModule,
     ComponentsModule,
-    ProductRoutingModule
+    ProductRoutingModule,
+    FormsModule
   ]
 })
 export class ProductsModule { }
