@@ -3,17 +3,24 @@
   
   <div class="container-fluid bg-grey py-5 body">
     <div class="container">
+      <h3 class="mb-4 color-primary"><strong>Nos produits</strong></h3>
       <div class="row mb-5">
-        <div class="col-10">
+        <div class="col-5">
           <input type="text" class="form-control" placeholder="Rechercher">
+        </div>
+        <div class="col-5">
+          <select name="category" id="category" class="form-control">
+            <option value="shawarma">Shawarma</option>
+            <option value="tendon">Tendon</option>
+            <option value="femme">Femme</option>
+          </select>
         </div>
         <div class="col-2">
           <button class="btn btn-success" routerLink="/products/form">Ajouter</button>
         </div>
       </div>
       
-      <!-- Trainings -->
-      <h3 class="mb-2"><strong>Formations</strong></h3>
+      <!-- Products list -->
       <div class="divider mb-4"></div>
       <div class="row">
         <div class="col-4" *ngFor="let p of [1,1,1,1,1]">
