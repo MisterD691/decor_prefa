@@ -4,6 +4,7 @@ import { Notify } from 'notiflix';
 import { ngxLoadingAnimationTypes } from 'ngx-loading';
 import { Category } from 'src/app/services/category/category';
 import { CategoryService } from 'src/app/services/category/category.service';
+import { Product } from 'src/app/services/product/product';
 
 @Component({
   selector: 'app-product-form',
@@ -12,15 +13,12 @@ import { CategoryService } from 'src/app/services/category/category.service';
 })
 export class ProductFormComponent implements OnInit {
   public loading: boolean = false;
-  public product: any = {
+  public product: Product = {
     title: "",
     description: "",
-    type: "",
     price: 0,
-    image: "",
-    file: "",
-    rating: 1,
-    isActive: true
+    categoryId: "",
+    quantity: 0,
   };
   public categories: Category[] = [];
   protected config = {
@@ -36,7 +34,7 @@ export class ProductFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    //
+    this.loadCategories();
   }
 
   loadCategories(): void {

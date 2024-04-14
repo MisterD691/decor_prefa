@@ -9,10 +9,8 @@
           <input type="text" class="form-control" placeholder="Rechercher">
         </div>
         <div class="col-5">
-          <select name="category" id="category" class="form-control">
-            <option value="shawarma">Shawarma</option>
-            <option value="tendon">Tendon</option>
-            <option value="femme">Femme</option>
+          <select name="category" id="category" class="form-control" [(ngModel)]="selectedCatId" required>
+            <option value="{{cat._id}}" *ngFor="let cat of categories">{{ cat.label }}</option>
           </select>
         </div>
         <div class="col-2">
@@ -22,15 +20,15 @@
       
       <!-- Products list -->
       <div class="row">
-        <div class="col-4" *ngFor="let p of [1,1,1,1,1,1,1,1,1]">
+        <div class="col-4" *ngFor="let p of products">
           <div class="card mb-5 shadow">
             <img class="card-img-top" src="assets/images/logo.png" alt="Card image cap">
             <div class="card-body">
-              <h5 class="card-title">Titre</h5>
-              <p class="card-text">p.description</p>
+              <h5 class="card-title">{{p.title}}</h5>
+              <p class="card-text">{{p.description}}</p>
               <div class="d-flex justify-content-between mb-3">
                 <a href="#" class="btn btn-success">Ajouter au panier</a>
-                <strong> p.price FCFA</strong>
+                <strong> {{p.price}} FCFA</strong>
               </div>
             </div>
           </div>
