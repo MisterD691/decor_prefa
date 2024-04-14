@@ -33,8 +33,19 @@
   color: white;
 }
 
+.bck-primary:hover {
+  background-color: #5d2782;
+  color: white;
+}
+
 .bck-secondary {
   background-color: #5d2782;
+  color: white;
+}
+
+.bck-secondary:hover {
+  background-color: #3c1557;
+  color: white;
 }
 
 .bck-blue {
@@ -82,4 +93,8 @@ a:hover {
 
 .service {
   padding: 50px 300px;
+}
+
+.pointer {
+  cursor: pointer;
 }
