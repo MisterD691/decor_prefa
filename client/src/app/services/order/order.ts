@@ -7,4 +7,6 @@ export interface Order {
   clientId?: string;
   responded?: boolean;
   response?: boolean;
+  createdAt?: Date;
+  updatedAt?: Date;
 }

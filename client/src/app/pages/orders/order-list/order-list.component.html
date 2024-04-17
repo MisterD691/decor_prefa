@@ -1,1 +1,52 @@
-<p>order-list works!</p>
+<div class="body">
+  <app-header [isBig]="false"></app-header>
+  
+  <div class="container-fluid bg-grey py-5 body">
+    <div class="container">
+      <h3 class="mb-4 color-primary"><strong>Commandes clients</strong></h3><br>
+      <div class="row mb-5">
+        <div class="col-12">
+          <input type="text" class="form-control" placeholder="Rechercher">
+        </div>
+        <!-- <div class="col-5">
+          <select name="category" id="category" class="form-control" [(ngModel)]="selectedCatId" required>
+            <option value="{{cat._id}}" *ngFor="let cat of categories">{{ cat.label }}</option>
+          </select>
+        </div> -->
+        <!-- <div class="col-2">
+          <button class="btn btn-success btn-block" *ngIf="role === 'admin'" routerLink="/products/form">Ajouter</button>
+        </div> -->
+      </div>
+      
+      <!-- Products list -->
+      <div class="row">
+        <div class="col-4"><strong>Référence commande</strong></div>
+        <div class="col-3"><strong>Quantité produits</strong></div>
+        <div class="col-2"><strong>Date de commande</strong></div>
+        <div class="col-2"><strong>Actions</strong></div>
+      </div>
+
+      <div class="row" *ngFor="let order of orders">
+        <div class="col-4">{{ order.reference }}</div>
+        <div class="col-3">5</div>
+        <div class="col-2">{{ order.createdAt }}</div>
+        <div class="col-2">5</div>
+        <!-- <div class="col-4">
+          <div class="card mb-5 shadow">
+            <img class="card-img-top" src="assets/images/logo.png" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">{{p.title}}</h5>
+              <p class="card-text">{{p.description}}</p>
+              <div class="d-flex justify-content-between mb-3">
+                <a class="btn btn-success" (click)="addToCart(p)">Ajouter au panier</a>
+                <strong> {{p.price}} FCFA</strong>
+              </div>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+</div>
+<app-footer></app-footer>
