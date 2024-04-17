@@ -37,6 +37,16 @@ export class ProductFormComponent implements OnInit {
     this.loadCategories();
   }
 
+  initProduct() {
+    this.product = {
+      title: "",
+      description: "",
+      price: 0,
+      categoryId: "",
+      quantity: 0,
+    };
+  }
+
   loadCategories(): void {
     this.categoryService.getAll().subscribe((res) => {
       if (res.datas) {
@@ -51,6 +61,7 @@ export class ProductFormComponent implements OnInit {
       this.loading = false;
       if (res.datas) {
         Notify.success("Enregistrement effectué avec succès");
+        this.initProduct();
       }
     }, (error) => {
       this.loading = false;
