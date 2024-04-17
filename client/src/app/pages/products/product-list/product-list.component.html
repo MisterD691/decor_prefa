@@ -14,7 +14,7 @@
           </select>
         </div>
         <div class="col-2">
-          <button class="btn btn-success btn-block" routerLink="/products/form">Ajouter</button>
+          <button class="btn btn-success btn-block" *ngIf="role === 'admin'" routerLink="/products/form">Ajouter</button>
         </div>
       </div>
       
