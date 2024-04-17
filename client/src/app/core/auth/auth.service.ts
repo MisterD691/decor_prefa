@@ -12,7 +12,7 @@ export class AuthService {
   public userObject$ = new ReplaySubject<any>(0);
 
   private readonly tokenKey: string = 'access_token';
-  private readonly userKey: string = 'user_id';
+  private readonly userKey: string = 'user';
   private readonly expireTime: string = 'expire';
   private readonly role = 'role';
 
@@ -52,7 +52,7 @@ export class AuthService {
       this.localSave.setItem(this.expireTime, expires);
     }
     this.isConnected.next(true);
-    this.userObject$.next(user.id);
+    this.userObject$.next(user._id);
   }
 
   setRole(role: String) {
