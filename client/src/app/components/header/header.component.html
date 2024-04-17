@@ -12,7 +12,18 @@
       <a class="pt-color" routerLink="/products/cart">
         <img src="assets/images/cart.png" alt="Logo panier" class="cart">
       </a>
-      <a class="btn bck-secondary" routerLink="/login">Connexion</a>
+      <a class="btn bck-secondary" routerLink="/login" *ngIf="!user">Connexion</a>
+      <div class="dd" *ngIf="user">
+        <a href="#" class="text-white">
+          <img src="assets/images/profile.png" alt="">&nbsp;
+          <span>{{ user.firstName }}</span>
+        </a>
+      
+        <div class="dropdown-content rounded-lg">
+          <div class="mb-2"><a routerLink="/">Profil</a></div>
+          <a class="btn btn-danger" href="/home" (click)="logout()">Déconnexion</a>
+        </div>
+      </div>
     </div>
   </div>
   <div class="row my-5" *ngIf="isBig">
