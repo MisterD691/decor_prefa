@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/core/auth/auth.service';
 import { Category } from 'src/app/services/category/category';
 import { CategoryService } from 'src/app/services/category/category.service';
+import { CartService } from 'src/app/services/product/cart.service';
 import { Product } from 'src/app/services/product/product';
 import { ProductService } from 'src/app/services/product/product.service';
 import { User } from 'src/app/services/user/user';
@@ -21,6 +22,7 @@ export class ProductListComponent implements OnInit {
     private productService: ProductService,
     private categoryService: CategoryService,
     protected auth: AuthService,
+    private cartService: CartService
   ) {
     this.role = auth.getRole();
   }
@@ -44,6 +46,10 @@ export class ProductListComponent implements OnInit {
         this.categories = res.datas;
       }
     });
+  }
+
+  addToCart(item: Product) {
+    this.cartService.addItemsToCart(item);
   }
 
 }

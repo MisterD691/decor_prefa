@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/auth/auth.service';
+import { CartService } from 'src/app/services/product/cart.service';
 import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
@@ -13,6 +14,7 @@ export class HeaderComponent implements OnInit {
   @Input() public title: string = "";
   @Input() public content: string = "";
   public loading: boolean = false;
+  public cartItemsQty: number = 0;
 
   protected user: any;
   
@@ -20,12 +22,21 @@ export class HeaderComponent implements OnInit {
     protected auth: AuthService,
     protected userService: UserService,
     protected router: Router,
+    private cartService: CartService
   ) {
     this.user = auth.getUserObject();
   }
 
   ngOnInit(): void {
-    //
+    this.getCartItemsQty();
+  }
+
+  getCartItemsQty() {
+    this.cartItemsQty = this.cartService.getCartCount();
+  }
+
+  getTotalItems() {
+    return this.cartService.getItemsFromCart().length;
   }
 
   public logout(): void {

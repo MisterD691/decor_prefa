@@ -11,6 +11,8 @@
       <a class="text-white" routerLink="/home" fragment="contact"><span>Contact</span></a>
       <a class="pt-color" routerLink="/products/cart">
         <img src="assets/images/cart.png" alt="Logo panier" class="cart">
+        <span class="badge badge-danger">{{ getTotalItems() }}</span> 
+        <!-- <span class="my-badge rounded-lg p-1">{{cartItemsQty}}</span> -->
       </a>
       <a class="btn bck-secondary" routerLink="/login" *ngIf="!user">Connexion</a>
       <div class="dd" *ngIf="user">
@@ -18,7 +20,6 @@
           <img src="assets/images/profile.png" alt="">&nbsp;
           <span>{{ user.firstName }}</span>
         </a>
-      
         <div class="dropdown-content rounded-lg">
           <div class="mb-2"><a routerLink="/">Profil</a></div>
           <a class="btn btn-danger" href="/home" (click)="logout()">Déconnexion</a>
