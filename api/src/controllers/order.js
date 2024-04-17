@@ -141,7 +141,7 @@ exports.reject = async (req, res) => {
 function filterOrder(input) {
   var order = {
     "reference": input.reference,
-    "clientId": input.clientId,
+    "client": input.clientId,
     "responded": input.responded,
     "response": input.response
   };

@@ -5,7 +5,6 @@ import { CategoryService } from 'src/app/services/category/category.service';
 import { CartService } from 'src/app/services/product/cart.service';
 import { Product } from 'src/app/services/product/product';
 import { ProductService } from 'src/app/services/product/product.service';
-import { User } from 'src/app/services/user/user';
 
 @Component({
   selector: 'app-product-list',

@@ -11,7 +11,7 @@ export class OrderProductService {
 
   constructor(protected http: HttpClient) { }
 
-  create(data: OrderProduct) {
+  create(data: OrderProduct[]) {
     return this.http.post<Response>(`${environment.apiUrl}/orderProduct/add`, data);
   }
 

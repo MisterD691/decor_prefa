@@ -8,7 +8,8 @@
       <a class="text-white" routerLink="/home"><span>Accueil</span></a>
       <a class="text-white" routerLink="/services"><span>Nos services</span></a>
       <a class="text-white" routerLink="/products"><span>Nos produits</span></a>
-      <a class="text-white" routerLink="/home" fragment="contact"><span>Contact</span></a>
+      <a class="text-white" routerLink="/home" fragment="contact" *ngIf="!(user && user.role == 'admin')"><span>Contact</span></a>
+      <a class="text-white" routerLink="/orders" fragment="contact" *ngIf="user && user.role == 'admin'"><span>Commandes</span></a>
       <a class="pt-color" routerLink="/products/cart">
         <img src="assets/images/cart.png" alt="Logo panier" class="cart">
         <span class="badge badge-danger">{{ getTotalItems() }}</span> 
