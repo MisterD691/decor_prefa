@@ -33,7 +33,7 @@
       <div class="col-5">
         <h1 class="mb-3">{{title}}</h1><br>
         <p class="mb-4">{{content}}</p>
-        <a class="btn bck-secondary" routerLink="/register">Créez votre compte</a>
+        <a class="btn bck-secondary" routerLink="/register" *ngIf="!user">Créez votre compte</a>
       </div>
       <img src="assets/images/logo.png" alt="Logo entreprise" class="rounded-circle img">
     </div>
