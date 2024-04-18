@@ -19,12 +19,12 @@
       </div>
       
       <!-- Products list -->
-      <div class="row">
+      <div class="row" *ngIf="role !== 'admin'">
         <div class="col-4" *ngFor="let p of products">
           <div class="card mb-5 shadow">
             <img class="card-img-top" src="assets/images/logo.png" alt="Card image cap">
             <div class="card-body">
-              <h5 class="card-title">{{p.title}}</h5>
+              <h5 class="card-title">{{p.title}} ({{p.category.label}})</h5>
               <p class="card-text text">{{p.description}}</p>
               <div class="d-flex justify-content-between mb-3">
                 <a class="btn btn-success" (click)="addToCart(p)">Ajouter au panier</a>
@@ -34,6 +34,58 @@
           </div>
         </div>
       </div>
+
+      <div class="row" *ngIf="role === 'admin'">
+        <div class="col-12">
+          <div class="row mb-4">
+            <!-- <div class="col-1"><strong>Image</strong></div> -->
+            <div class="col-3"><strong>Catégorie</strong></div>
+            <div class="col-3"><strong>Titre</strong></div>
+            <!-- <div class="col-2"><strong>Description</strong></div> -->
+            <div class="col-2"><strong>Prix unitaire</strong></div>
+            <div class="col-1"><strong>Stock</strong></div>
+            <div class="col-3"><strong>Actions</strong></div>
+          </div>
+
+          <div *ngIf="products.length > 0">
+            <div class="row border shadow-sm mb-3 py-3 rounded-lg" *ngFor="let p of products">
+              <!-- <div class="col-1 d-flex align-items-center">{{ p.picture }}</div> -->
+              <div class="col-3 d-flex align-items-center">{{ p.category.label }}</div>
+              <div class="col-3 d-flex align-items-center">{{ p.title }}</div>
+              <!-- <div class="col-2 d-flex align-items-center text">{{ p.description }}</div> -->
+              <div class="col-2 d-flex align-items-center">{{ p.price }} FCFA</div>
+              <div class="col-1 d-flex align-items-center">{{ p.quantity }}</div>
+              <div class="col-3 d-flex align-items-center">
+                <a [routerLink]="['/orders/detail', p._id]" class="btn btn-info mr-3">
+                  <img src="assets/images/detail.png" alt="detail" class="ico">
+                </a>
+                <a [routerLink]="['/orders/detail', p._id]" class="btn btn-warning mr-3">
+                  <img src="assets/images/edit.png" alt="update" class="ico">
+                </a>
+                <button type="button" class="btn btn-danger" (click)="deleteProduct(p._id)">
+                  <img src="assets/images/delete.png" alt="delete" class="ico">
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- <div class="col-4" *ngFor="let p of products">
+          <div class="card mb-5 shadow">
+            <img class="card-img-top" src="assets/images/logo.png" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">{{p.title}} ({{p.category.label}})</h5>
+              <p class="card-text text">{{p.description}}</p>
+              <div class="d-flex justify-content-between mb-3">
+                <a class="btn btn-success" (click)="addToCart(p)">Ajouter au panier</a>
+                <strong> {{p.price}} FCFA</strong>
+              </div>
+            </div>
+          </div>
+        </div> -->
+      </div>
+
     </div>
   </div>
 

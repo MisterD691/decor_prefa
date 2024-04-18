@@ -5,6 +5,7 @@ import { CategoryService } from 'src/app/services/category/category.service';
 import { CartService } from 'src/app/services/product/cart.service';
 import { Product } from 'src/app/services/product/product';
 import { ProductService } from 'src/app/services/product/product.service';
+import { Notify } from 'notiflix';
 
 @Component({
   selector: 'app-product-list',
@@ -12,10 +13,11 @@ import { ProductService } from 'src/app/services/product/product.service';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
-  public products: Product[] = [];
+  public products: any[] = [];
   public categories: Category[] = [];
   public selectedCatId: string = "";
   protected role: string = "";
+  public loading: boolean = false;
 
   constructor(
     private productService: ProductService,
@@ -49,6 +51,20 @@ export class ProductListComponent implements OnInit {
 
   addToCart(item: Product) {
     this.cartService.addItemsToCart(item);
+  }
+
+  deleteProduct(id?: string) {
+    this.loading = true;
+    this.productService.remove(id).subscribe((res) => {
+      this.loading = false;
+      if (res.datas) {
+        Notify.success("Suppression effectuée avec succès");
+        this.getProducts();
+      }
+    }, (err) => {
+      this.loading = false;
+      Notify.success("Une erreur est survenue pendant la suppression. Si l'erreur persiste veuillez contacter l'administrateur");
+    });
   }
 
 }
