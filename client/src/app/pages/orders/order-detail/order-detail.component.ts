@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { OrderProduct } from 'src/app/services/order_product/order-product';
 import { OrderProductService } from 'src/app/services/order_product/order-product.service';
 
 @Component({
@@ -9,7 +8,7 @@ import { OrderProductService } from 'src/app/services/order_product/order-produc
   styleUrls: ['./order-detail.component.css']
 })
 export class OrderDetailComponent {
-  public orderProds: OrderProduct[] = [];
+  public orderProds: any[] = [];
   public orderId: string = "";
 
   constructor(
@@ -29,6 +28,11 @@ export class OrderDetailComponent {
         this.orderProds = res.datas;
       }
     });
+  }
+
+  deleteOrderProd(id?: string) {
+    let value = prompt("Souhaitez-vous vraiment supprimer cette commande ?");
+    console.log(value);
   }
 
 }

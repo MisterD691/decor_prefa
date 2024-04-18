@@ -17,19 +17,21 @@
         <div class="col-4"><strong>Actions</strong></div>
       </div>
 
-      <div class="row border shadow-sm mb-3 py-3 rounded-lg" *ngFor="let order of orders">
-        <div class="col-4 d-flex align-items-center">{{ order.reference }}</div>
-        <div class="col-4 d-flex align-items-center">{{ order.createdAt | date: "dd/MM/YYYY à HH:mm" }}</div>
-        <div class="col-4 d-flex align-items-center">
-          <button type="button" class="btn btn-info mr-3">
-            <img src="assets/images/detail.png" alt="detail" class="ico">
-          </button>
-          <button type="button" class="btn btn-danger" (click)="deleteOrder()">
-            <img src="assets/images/delete.png" alt="delete" class="ico">
-          </button>
+      <div *ngIf="orders.length > 0">
+        <div class="row border shadow-sm mb-3 py-3 rounded-lg" *ngFor="let order of orders">
+          <div class="col-4 d-flex align-items-center">{{ order.reference }}</div>
+          <div class="col-4 d-flex align-items-center">{{ order.createdAt | date: "dd/MM/YYYY à HH:mm" }}</div>
+          <div class="col-4 d-flex align-items-center">
+            <a [routerLink]="['/orders/detail', order._id]" class="btn btn-info mr-3">
+              <img src="assets/images/detail.png" alt="detail" class="ico">
+            </a>
+            <button type="button" class="btn btn-danger" (click)="deleteOrder()">
+              <img src="assets/images/delete.png" alt="delete" class="ico">
+            </button>
+          </div>
         </div>
       </div>
-
+      
       <div class="row">
         <div class="cl-12">
           <strong>Total commandes {{ orders.length }}</strong>

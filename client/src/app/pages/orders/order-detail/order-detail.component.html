@@ -1,1 +1,75 @@
-<p>order-detail works!</p>
+<div class="body">
+  <app-header [isBig]="false"></app-header>
+  
+  <div class="container-fluid bg-grey py-5 body">
+    <div class="container">
+      <h3 class="mb-4 color-primary"><strong>Détails commande</strong></h3><br>
+
+      <h4 class="mb-4 color-primary"><strong>Informations commande</strong></h4>
+      <div *ngIf="orderProds.length > 0">
+        <div class="row mb-5">
+          <div class="col-4 mb-3">
+            <span class="mb-3"><strong>Référence</strong></span>
+            <h5>{{ orderProds[0].order.reference }}</h5>
+          </div>
+          <div class="col-4 mb-3">
+            <span class="mb-3"><strong>Client</strong></span>
+            <h5>{{ orderProds[0].order.client.lastName }} {{ orderProds[0].order.client.firstName }}</h5>
+          </div>
+          <div class="col-4 mb-3">
+            <span class="mb-3"><strong>Date commande</strong></span>
+            <h5>{{ orderProds[0].order.createdAt | date: "dd/MM/YYYY à HH:mm" }}</h5>
+          </div>
+          <div class="col-4 mb-3">
+            <span class="mb-3"><strong>Statut</strong></span>
+            <h5 *ngIf="orderProds[0].order.responded">
+              <span class="badge badge-success">Traité</span>
+            </h5>
+            <h5 *ngIf="!orderProds[0].order.responded">
+              <span class="badge badge-info">Non traité</span> 
+            </h5>
+          </div>
+        </div>
+      </div>
+
+      <h4 class="mb-4 color-primary"><strong>Produits</strong></h4>
+
+      <div class="row mb-5">
+        <div class="col-12">
+          <input type="text" class="form-control" placeholder="Rechercher">
+        </div>
+      </div>
+
+      <!-- Products list -->
+      <div class="row mb-3">
+        <div class="col-3"><strong>Nom produit</strong></div>
+        <div class="col-3"><strong>Prix unitaire</strong></div>
+        <div class="col-3"><strong>Quantité</strong></div>
+        <div class="col-3"><strong>Client</strong></div>
+      </div>
+
+      <div class="row border shadow-sm mb-3 py-3 rounded-lg" *ngFor="let op of orderProds">
+        <div class="col-3 d-flex align-items-center" *ngIf="op.product">{{ op.product.title }}</div>
+        <div class="col-3 d-flex align-items-center" *ngIf="op.product">{{ op.product.price }}</div>
+        <div class="col-3 d-flex align-items-center">{{ op.quantity }}</div>
+        <div class="col-3 d-flex align-items-center">{{ op.order.client.lastName }} {{ op.order.client.firstName }}</div>
+        <!-- <div class="col-4 d-flex align-items-center">
+          <button type="button" class="btn btn-info mr-3">
+            <img src="assets/images/detail.png" alt="detail" class="ico">
+          </button>
+          <button type="button" class="btn btn-danger" (click)="deleteOrderProd()">
+            <img src="assets/images/delete.png" alt="delete" class="ico">
+          </button>
+        </div> -->
+      </div>
+
+      <div class="row mt-4">
+        <div class="col-12">
+          <strong>Total produits {{ orderProds.length }}</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<app-footer></app-footer>

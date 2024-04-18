@@ -47,9 +47,13 @@ exports.getById = async (req, res) => {
 exports.getByOrder = async (req, res) => {
   try {
     console.log("Request to get order_product by order...");
-    const result = await Order.find({ client: req.params.orderId })
+    const result = await OrderProduct.find({ order: req.params.orderId })
     .sort([['updatedAt', 'desc']])
-    .populate(["order"]).populate(["product"]);
+    .populate({
+      path: "order",
+      populate: ["client"]
+    })
+    .populate(["product"]);
     return res.status(200).json({datas: result});
   } catch (e) {
     console.log("Error: " + e);
@@ -60,7 +64,7 @@ exports.getByOrder = async (req, res) => {
 exports.getByProduct = async (req, res) => {
   try {
     console.log("Request to get order_product by product...");
-    const result = await Order.find({ product: req.params.productId })
+    const result = await OrderProduct.find({ product: req.params.productId })
     .sort([['updatedAt', 'desc']])
     .populate(["order"]).populate(["product"]);
     return res.status(200).json({datas: result});
