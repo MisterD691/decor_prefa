@@ -9,7 +9,7 @@
           <input type="text" (keyup)="research($event)" class="form-control" placeholder="Rechercher">
         </div>
         <div class="col-5">
-          <select name="category" id="category" class="form-control" [(ngModel)]="selectedCatId" required>
+          <select name="category" id="category" class="form-control" [(ngModel)]="selectedCatId" (change)="filterCat()" required>
             <option value="{{cat._id}}" *ngFor="let cat of categories">{{ cat.label }}</option>
           </select>
         </div>

@@ -48,6 +48,7 @@ export class ProductListComponent implements OnInit {
     this.categoryService.getAll().subscribe((res) => {
       if (res.datas) {
         this.categories = res.datas;
+        this.categories.push({label: "Tout", _id: "0"});
       }
     });
   }
@@ -79,7 +80,15 @@ export class ProductListComponent implements OnInit {
     if (value != "") {
       this.products = this.prodDatas.filter((prod) => (prod.title.toLowerCase().includes(value) || prod.price.toString().toLowerCase().includes(value)));
     } else {
+      this.filterCat();
+    }
+  }
+
+  filterCat(): void {
+    if (this.selectedCatId == "0") {
       this.products = this.prodDatas;
+    } else {
+      this.products = this.prodDatas.filter((prod) => (prod.category._id == this.selectedCatId));
     }
   }
 
