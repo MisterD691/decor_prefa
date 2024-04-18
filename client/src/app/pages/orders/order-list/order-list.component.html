@@ -27,7 +27,7 @@
 
       <div class="row border shadow-sm mb-3 py-3 rounded-lg" *ngFor="let order of orders">
         <div class="col-4 d-flex align-items-center">{{ order.reference }}</div>
-        <div class="col-4 d-flex align-items-center">{{ order.createdAt }}</div>
+        <div class="col-4 d-flex align-items-center">{{ order.createdAt | date: "dd/MM/YYYY à HH:mm" }}</div>
         <div class="col-4 d-flex align-items-center">
           <button type="button" class="btn btn-info mr-2">
             <img src="assets/images/detail.png" alt="detail" class="ico">
@@ -35,7 +35,7 @@
           <button type="button" class="btn btn-warning mr-2">
             <img src="assets/images/edit.png" alt="edit" class="ico">
           </button>
-          <button type="button" class="btn btn-danger">
+          <button type="button" class="btn btn-danger" (click)="deleteOrder()">
             <img src="assets/images/delete.png" alt="delete" class="ico">
           </button>
         </div>

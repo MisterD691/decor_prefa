@@ -30,4 +30,9 @@ export class OrderListComponent implements OnInit {
       }
     });
   }
+
+  deleteOrder(id?: string) {
+    let value = prompt("Souhaitez-vous vraiment supprimer cette commande ?");
+    console.log(value);
+  }
 }
