@@ -79,8 +79,7 @@ export class ProductListComponent implements OnInit {
     if (value != "") {
       this.products = this.prodDatas.filter((prod) => (prod.title.toLowerCase().includes(value) || prod.price.toString().toLowerCase().includes(value)));
     } else {
-      this.products = [];
-      this.products = [...this.prodDatas];
+      this.products = this.prodDatas;
     }
   }
 
