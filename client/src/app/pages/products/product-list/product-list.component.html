@@ -56,9 +56,9 @@
               <div class="col-2 d-flex align-items-center">{{ p.price }} FCFA</div>
               <div class="col-1 d-flex align-items-center">{{ p.quantity }}</div>
               <div class="col-3 d-flex align-items-center">
-                <a [routerLink]="['/orders/detail', p._id]" class="btn btn-info mr-3">
+                <button class="btn btn-info mr-3" (click)="selectProd(p)">
                   <img src="assets/images/detail.png" alt="detail" class="ico">
-                </a>
+                </button>
                 <a [routerLink]="['/orders/detail', p._id]" class="btn btn-warning mr-3">
                   <img src="assets/images/edit.png" alt="update" class="ico">
                 </a>
@@ -70,22 +70,38 @@
           </div>
 
         </div>
+      </div>
 
-        <!-- <div class="col-4" *ngFor="let p of products">
-          <div class="card mb-5 shadow">
-            <img class="card-img-top" src="assets/images/logo.png" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">{{p.title}} ({{p.category.label}})</h5>
-              <p class="card-text text">{{p.description}}</p>
-              <div class="d-flex justify-content-between mb-3">
-                <a class="btn btn-success" (click)="addToCart(p)">Ajouter au panier</a>
-                <strong> {{p.price}} FCFA</strong>
-              </div>
-            </div>
+      <br><br><br>
+
+      <!-- Details produit -->
+      <div *ngIf="selectedProd">
+        <h3 class="mb-4 color-primary"><strong>Détails produit</strong></h3>
+        <div class="row">
+          <div class="col-4 mb-3">
+            <span>Catégorie</span>
+            <h5>{{ selectedProd.category.label }}</h5>
           </div>
-        </div> -->
-
-        
+          <div class="col-4 mb-3">
+            <span>Titre</span>
+            <h5>{{ selectedProd.title }}</h5>
+          </div>
+          <div class="col-4 mb-3">
+            <span>Prix unitaire</span>
+            <h5>{{ selectedProd.price }} FCFA</h5>
+          </div>
+          <div class="col-4 mb-3">
+            <span>Quantité stock</span>
+            <h5>{{ selectedProd.quantity }}</h5>
+          </div>
+          <!-- <div class="col-4 mb-4"></div> -->
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <span>Description</span>
+            <h6>{{ selectedProd.description }}</h6>
+          </div>
+        </div>
       </div>
 
     </div>

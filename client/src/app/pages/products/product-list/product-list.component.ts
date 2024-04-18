@@ -18,6 +18,7 @@ export class ProductListComponent implements OnInit {
   public selectedCatId: string = "";
   protected role: string = "";
   public loading: boolean = false;
+  public selectedProd: any;
 
   constructor(
     private productService: ProductService,
@@ -51,6 +52,10 @@ export class ProductListComponent implements OnInit {
 
   addToCart(item: Product) {
     this.cartService.addItemsToCart(item);
+  }
+
+  selectProd(prod: any): void {
+    this.selectedProd = prod;
   }
 
   deleteProduct(id?: string) {
