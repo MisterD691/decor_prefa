@@ -14,6 +14,7 @@ import { Notify } from 'notiflix';
 })
 export class ProductListComponent implements OnInit {
   public products: any[] = [];
+  public prodDatas: any[] = [];
   public categories: Category[] = [];
   public selectedCatId: string = "";
   protected role: string = "";
@@ -37,6 +38,7 @@ export class ProductListComponent implements OnInit {
   getProducts(): void {
     this.productService.getAll().subscribe((res) => {
       if (res.datas) {
+        this.prodDatas = res.datas;
         this.products = res.datas;
       }
     });
@@ -70,6 +72,16 @@ export class ProductListComponent implements OnInit {
       this.loading = false;
       Notify.success("Une erreur est survenue pendant la suppression. Si l'erreur persiste veuillez contacter l'administrateur");
     });
+  }
+
+  research(event: any): void {
+    let value = event.target.value.toLowerCase();
+    if (value != "") {
+      this.products = this.prodDatas.filter((prod) => (prod.title.toLowerCase().includes(value) || prod.price.toString().toLowerCase().includes(value)));
+    } else {
+      this.products = [];
+      this.products = [...this.prodDatas];
+    }
   }
 
 }
