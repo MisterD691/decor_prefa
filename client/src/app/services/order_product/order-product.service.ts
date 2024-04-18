@@ -23,8 +23,8 @@ export class OrderProductService {
     return this.http.get<Response>(`${environment.apiUrl}/orderProduct/getById/${id}`);
   }
 
-  getByClient(id: string) {
-    return this.http.get<Response>(`${environment.apiUrl}/orderProduct/getByClient/${id}`);
+  getByOrder(id: string) {
+    return this.http.get<Response>(`${environment.apiUrl}/orderProduct/getByOrder/${id}`);
   }
 
   getByProduct(id: any) {

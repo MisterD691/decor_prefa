@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/core/auth/auth.service';
 import { Order } from 'src/app/services/order/order';
 import { OrderService } from 'src/app/services/order/order.service';
-
 @Component({
   selector: 'app-order-list',
   templateUrl: './order-list.component.html',
@@ -31,5 +30,4 @@ export class OrderListComponent implements OnInit {
       }
     });
   }
-
 }

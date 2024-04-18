@@ -4,7 +4,7 @@ const router = express.Router();
 const {
   add,
   getById,
-  getByClient,
+  getByOrder,
   getByProduct,
   getAll,
   update,
@@ -13,7 +13,7 @@ const {
 
 router.post("/add", add);
 router.get("/getById/:id", getById);
-router.get("/getByClient/:clientId", getByClient);
+router.get("/getByOrder/:orderId", getByOrder);
 router.get("/getByProduct/:productId", getByProduct);
 router.get("/getAll", getAll);
 router.put("/update/:id", update);
