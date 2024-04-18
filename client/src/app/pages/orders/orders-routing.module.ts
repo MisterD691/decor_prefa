@@ -14,7 +14,7 @@ const routes: Routes = [
     component: OrderListComponent
   },
   {
-    path: 'detail',
+    path: 'detail/:orderId',
     runGuardsAndResolvers: 'always',
     component: OrderDetailComponent
   },
@@ -24,4 +24,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
+
 export class OrderRoutingModule { }
