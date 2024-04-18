@@ -56,7 +56,7 @@ export class CartComponent implements OnInit {
   }
 
   getTotalItems() {
-    return this.cartService.getItemsFromCart().length;
+    return this.cartService.getCartCount();
   }
 
   order() {

@@ -52,6 +52,7 @@ export class CartService {
       });
       return count;
     }
+    return 0;
   }
 
   clearCart() {
