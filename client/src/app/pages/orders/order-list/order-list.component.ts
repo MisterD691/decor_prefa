@@ -8,6 +8,7 @@ import { OrderService } from 'src/app/services/order/order.service';
 })
 export class OrderListComponent implements OnInit {
   public orders: any[] = [];
+  public ordersData: any[] = [];
   public selectedCatId: string = "";
   protected role: string = "";
 
@@ -25,6 +26,7 @@ export class OrderListComponent implements OnInit {
   getOrders(): void {
     this.orderService.getAll().subscribe((res) => {
       if (res.datas) {
+        this.ordersData = res.datas;
         this.orders = res.datas;
       }
     });
@@ -33,5 +35,14 @@ export class OrderListComponent implements OnInit {
   deleteOrder(id?: string) {
     let value = prompt("Souhaitez-vous vraiment supprimer cette commande ?");
     console.log(value);
+  }
+
+  research(event: any): void {
+    let value = event.target.value.toLowerCase();
+    if (value != "") {
+      this.orders = this.ordersData.filter((order) => (order.reference.toLowerCase().includes(value) || order.client.lastName.toLowerCase().includes(value) || order.client.firstName.toLowerCase().includes(value)));
+    } else {
+      this.orders = this.ordersData;
+    }
   }
 }
