@@ -39,9 +39,9 @@
       <div class="row" *ngIf="role === 'admin'">
         <div class="col-12">
           <div class="row mb-4">
-            <!-- <div class="col-1"><strong>Image</strong></div> -->
-            <div class="col-3"><strong>Catégorie</strong></div>
-            <div class="col-3"><strong>Titre</strong></div>
+            <div class="col-2"><strong>Image</strong></div>
+            <div class="col-2"><strong>Catégorie</strong></div>
+            <div class="col-2"><strong>Titre</strong></div>
             <!-- <div class="col-2"><strong>Description</strong></div> -->
             <div class="col-2"><strong>Prix unitaire</strong></div>
             <div class="col-1"><strong>Stock</strong></div>
@@ -50,9 +50,12 @@
 
           <div *ngIf="products.length > 0">
             <div class="row border shadow-sm mb-3 py-3 rounded-lg" *ngFor="let p of products">
-              <!-- <div class="col-1 d-flex align-items-center">{{ p.picture }}</div> -->
-              <div class="col-3 d-flex align-items-center">{{ p.category.label }}</div>
-              <div class="col-3 d-flex align-items-center">{{ p.title }}</div>
+              <div class="col-2 d-flex align-items-center">
+                <img class="img-thumb" [src]="p.picture" *ngIf="p.picture" alt="Product image">
+                <img src="" *ngIf="!p.picture" alt="Product image">
+              </div>
+              <div class="col-2 d-flex align-items-center">{{ p.category.label }}</div>
+              <div class="col-2 d-flex align-items-center">{{ p.title }}</div>
               <!-- <div class="col-2 d-flex align-items-center text">{{ p.description }}</div> -->
               <div class="col-2 d-flex align-items-center">{{ p.price }} FCFA</div>
               <div class="col-1 d-flex align-items-center">{{ p.quantity }}</div>

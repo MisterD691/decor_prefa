@@ -107,3 +107,12 @@ a:hover {
 p {
   line-height: 40px;
 }
+
+.img-thumb {
+  height: 60px;
+}
+
+.img-prod {
+  height: 250px;
+}
+
