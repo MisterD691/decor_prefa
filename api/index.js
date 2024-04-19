@@ -8,6 +8,7 @@ const db = require("./src/helpers/mongoose");
 const app = express();
 
 const category = require("./src/routes/category");
+const article = require("./src/routes/article");
 const orderProduct = require("./src/routes/order_product");
 const product = require("./src/routes/product");
 const order = require("./src/routes/order");
@@ -27,6 +28,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use("/user", user);
 app.use("/product", product);
 app.use("/category", category);
+app.use("/article", article);
 app.use("/orderProduct", orderProduct);
 app.use("/order", order);
 app.use("*", (_, res, __) => res.status(404).send("Resource not found"));
