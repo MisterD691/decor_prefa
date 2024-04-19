@@ -17,7 +17,7 @@ export class BlogFormComponent {
     content: "",
     picture: ""
   };
-  public artId: string = "false";
+  public artId: string = "";
   protected config = {
     animationType: ngxLoadingAnimationTypes.threeBounce,
     primaryColour: '#0205d2',

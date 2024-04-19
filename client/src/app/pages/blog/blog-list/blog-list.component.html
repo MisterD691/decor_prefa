@@ -53,8 +53,8 @@
                 <img class="card-img-top img-thumb" [src]="art.picture" *ngIf="art.picture" alt="Card image cap">
                 <img class="card-img-top img-thumb" src="" *ngIf="!art.picture" alt="Card image cap">
               </div>
-              <div class="col-2 d-flex align-items-center">{{ art.title }}</div>
-              <div class="col-3 d-flex align-items-center">{{ art.content }}</div>
+              <div class="col-2 d-flex align-items-center cat">{{ art.title }}</div>
+              <div class="col-3 d-flex align-items-center text">{{ art.content }}</div>
               <div class="col-2 d-flex align-items-center">{{ art.updatedAt | date: "dd/MM/YYYY à HH:mm" }}</div>
               <div class="col-3 d-flex align-items-center">
                 <button class="btn btn-info mr-3" (click)="selectArticle(art)">
