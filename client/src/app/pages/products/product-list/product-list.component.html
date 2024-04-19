@@ -27,9 +27,12 @@
             <div class="card-body">
               <h5 class="card-title cat">{{p.title}} ({{p.category.label}})</h5>
               <p class="card-text text">{{p.description}}</p>
+              <p><strong>{{p.price}} FCFA</strong></p>
               <div class="d-flex justify-content-between mb-3">
                 <a class="btn btn-success" (click)="addToCart(p)">Ajouter au panier</a>
-                <strong> {{p.price}} FCFA</strong>
+                <button class="btn btn-info mr-3" (click)="selectProd(p)">
+                  <img src="assets/images/detail.png" alt="detail" class="ico">
+                </button>
               </div>
             </div>
           </div>
