@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   public title: string = "Bienvenue sur notre plateforme Decor Prefa";
-  public content: string = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla commodo, ante a sagittis euismod, felis nisi imperdiet urna, sed tincidunt dolor neque non turpis. Nullam efficit...";
+  public content: string = "Decor Prefa se propose de toujours mettre premièrement en avant sa clientèle en lui offrant le meilleur dans l’accompagnement immobilière à moindre cout.";
 
   ngOnInit(): void {
     //
