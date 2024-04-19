@@ -51,6 +51,13 @@ const routes: Routes = [
       (m) => m.OrdersModule
     )
   },
+  {
+    path: 'blog',
+    runGuardsAndResolvers: 'always',
+    loadChildren: () => import('./pages/blog/blog.module').then(
+      (m) => m.BlogModule
+    )
+  },
 ];
 
 @NgModule({
