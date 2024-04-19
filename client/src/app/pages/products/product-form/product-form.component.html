@@ -4,7 +4,8 @@
   <div class="container-fluid py-5">
     <div class="container">
       <h3 class="my-4 color-primary">
-        <strong>Ajouter nouveau produit</strong>
+        <strong *ngIf="!productId">Ajouter nouveau produit</strong>
+        <strong *ngIf="productId">Editer produit</strong>
       </h3>
       <div class="row">
         <div class="col-6">

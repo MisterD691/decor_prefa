@@ -14,7 +14,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductFormComponent implements OnInit {
   public loading: boolean = false;
-  public productId: string = "false";
+  public productId: string = "";
   public product: Product = {
     title: "",
     description: "",
