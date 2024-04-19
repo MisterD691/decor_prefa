@@ -20,6 +20,11 @@ const routes: Routes = [
     component: ProductFormComponent
   },
   {
+    path: 'form/:prodId',
+    runGuardsAndResolvers: 'always',
+    component: ProductFormComponent
+  },
+  {
     path: 'cart',
     runGuardsAndResolvers: 'always',
     component: CartComponent

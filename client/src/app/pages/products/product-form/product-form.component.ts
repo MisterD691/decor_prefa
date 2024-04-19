@@ -5,6 +5,7 @@ import { ngxLoadingAnimationTypes } from 'ngx-loading';
 import { Category } from 'src/app/services/category/category';
 import { CategoryService } from 'src/app/services/category/category.service';
 import { Product } from 'src/app/services/product/product';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-product-form',
@@ -13,6 +14,7 @@ import { Product } from 'src/app/services/product/product';
 })
 export class ProductFormComponent implements OnInit {
   public loading: boolean = false;
+  public productId: string = "false";
   public product: Product = {
     title: "",
     description: "",
@@ -31,8 +33,15 @@ export class ProductFormComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private categoryService: CategoryService
-  ) {}
+    private categoryService: CategoryService,
+    private route: ActivatedRoute
+  ) {
+    const productId = this.route.snapshot.params['prodId'];
+    if (productId) {
+      this.productId = productId;
+      this.getProduct();
+    }
+  }
 
   ngOnInit(): void {
     this.loadCategories();
@@ -68,17 +77,40 @@ export class ProductFormComponent implements OnInit {
     }
   }
 
+  getProduct(): void {
+    this.productService.getById(this.productId).subscribe((res) => {
+      if (res.datas) {
+        this.product = res.datas;
+        this.product.categoryId = this.product.category?._id;
+      }
+    });
+  }
+
   saveProduct(): any {
     this.loading = true;
-    this.productService.create(this.product).subscribe((res) => {
-      this.loading = false;
-      if (res.datas) {
-        Notify.success("Enregistrement effectué avec succès");
-        this.initProduct();
-      }
-    }, (error) => {
-      this.loading = false;
-      Notify.failure("Erreur lors de l'enregistement");
-    });
+    if (this.product._id) {
+      this.productService.update(this.product._id, this.product).subscribe((res) => {
+        this.loading = false;
+        if (res.datas) {
+          Notify.success("Mise à jour effectuée avec succès");
+          this.initProduct();
+        }
+      }, (error) => {
+        this.loading = false;
+        Notify.failure("Erreur lors de la mise à jour");
+      });
+    } else {
+      this.productService.create(this.product).subscribe((res) => {
+        this.loading = false;
+        if (res.datas) {
+          Notify.success("Enregistrement effectué avec succès");
+          this.initProduct();
+        }
+      }, (error) => {
+        this.loading = false;
+        Notify.failure("Erreur lors de l'enregistement");
+      });
+    }
+    
   }
 }

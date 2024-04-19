@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ngxLoadingAnimationTypes } from 'ngx-loading';
 import { Notify } from 'notiflix';
 import { Article } from 'src/app/services/article/article';
@@ -16,6 +17,7 @@ export class BlogFormComponent {
     content: "",
     picture: ""
   };
+  public artId: string = "false";
   protected config = {
     animationType: ngxLoadingAnimationTypes.threeBounce,
     primaryColour: '#0205d2',
@@ -24,8 +26,15 @@ export class BlogFormComponent {
   };
 
   constructor(
-    private articleService: ArticleService
-  ) { }
+    private articleService: ArticleService,
+    private route: ActivatedRoute
+  ) {
+    const artId = this.route.snapshot.params['articleId'];
+    if (artId) {
+      this.artId = artId;
+      this.getArticle();
+    }
+  }
 
   ngOnInit(): void {
     //
@@ -51,17 +60,38 @@ export class BlogFormComponent {
     }
   }
 
+  getArticle(): void {
+    this.articleService.getById(this.artId).subscribe((res) => {
+      if (res.datas) {
+        this.article = res.datas;
+      }
+    });
+  }
+
   saveArticle(): any {
     this.loading = true;
-    this.articleService.create(this.article).subscribe((res) => {
-      this.loading = false;
-      if (res.datas) {
-        Notify.success("Enregistrement effectué avec succès");
-        this.initProduct();
-      }
-    }, (error) => {
-      this.loading = false;
-      Notify.failure("Erreur lors de l'enregistement");
-    });
+    if (this.article._id) {
+      this.articleService.update(this.article._id, this.article).subscribe((res) => {
+        this.loading = false;
+        if (res.datas) {
+          Notify.success("Mise à jour effectuée avec succès");
+          this.initProduct();
+        }
+      }, (error) => {
+        this.loading = false;
+        Notify.failure("Erreur lors de la mise à jour");
+      });
+    } else {
+      this.articleService.create(this.article).subscribe((res) => {
+        this.loading = false;
+        if (res.datas) {
+          Notify.success("Enregistrement effectué avec succès");
+          this.initProduct();
+        }
+      }, (error) => {
+        this.loading = false;
+        Notify.failure("Erreur lors de l'enregistement");
+      });
+    }  
   }
 }

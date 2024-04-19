@@ -21,9 +21,9 @@ const routes: Routes = [
     component: BlogFormComponent
   },
   {
-    path: 'detail/:blogId',
+    path: 'form/:articleId',
     runGuardsAndResolvers: 'always',
-    component: BlogDetailComponent
+    component: BlogFormComponent
   },
 ];
 

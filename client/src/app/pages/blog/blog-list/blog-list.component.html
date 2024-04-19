@@ -4,7 +4,7 @@
   <div class="container-fluid bg-grey py-5 body">
     <div class="container">
       <h3 class="mb-4 color-primary"><strong>Blog</strong></h3><br>
-      <div class="row mb-5">
+      <div class="row mb-5" *ngIf="role === 'admin'">
         <div class="col-10">
           <input type="text" (keyup)="research($event)" class="form-control" placeholder="Rechercher">
         </div>
@@ -55,7 +55,7 @@
                 <button class="btn btn-info mr-3" (click)="selectArticle(art)">
                   <img src="assets/images/detail.png" alt="detail" class="ico">
                 </button>
-                <a [routerLink]="['/orders/detail', art._id]" class="btn btn-warning mr-3">
+                <a [routerLink]="['/blog/form', art._id]" class="btn btn-warning mr-3">
                   <img src="assets/images/edit.png" alt="update" class="ico">
                 </a>
                 <button type="button" class="btn btn-danger" (click)="deleteArticle(art._id)">
@@ -72,7 +72,7 @@
 
       <!-- Details produit -->
       <div *ngIf="selectedArticle">
-        <h3 class="mb-4 color-primary"><strong>Détails produit</strong></h3>
+        <h3 class="mb-4 color-primary"><strong>Détails Article</strong></h3>
         <div class="row">
           <div class="col-5 mb-3">
             <h6>Image</h6>
