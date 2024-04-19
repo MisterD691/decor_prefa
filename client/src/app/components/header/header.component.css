@@ -30,3 +30,12 @@
 .dd:hover .dropdown-content {
   display: block;
 }
+
+.fixed-menu {
+  position: fixed;
+  top: 0;
+  content: "";
+  z-index: 1000;
+  background-color: white;
+  display: none;
+}

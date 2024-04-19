@@ -27,8 +27,24 @@ export class HeaderComponent implements OnInit {
     this.user = auth.getUserObject();
   }
 
+  scrollEvent(): void {
+    $(window).scroll(function() {
+      var scroll = $(document).scrollTop();
+      if (scroll != undefined && scroll > 50) {
+        $(".fixed-menu").show();
+      } else {
+        $(".fixed-menu").hide();
+      }
+    });
+  }
+
   ngOnInit(): void {
+    this.scrollEvent();
     this.getCartItemsQty();
+  }
+
+  ngOnDestroy(): void {
+    $(window).unbind("scroll");
   }
 
   getCartItemsQty() {

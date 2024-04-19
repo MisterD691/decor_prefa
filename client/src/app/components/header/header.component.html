@@ -40,3 +40,36 @@
     </div>
   </div>
 </div>
+
+<div class="container-fluid px-5 py-3 gradient text-white shadow fixed-menu">
+  <div class="row">
+    <div class="col-6 d-flex align-items-center">
+      <img src="assets/images/logo.png" alt="" class="logo_app rounded-circle mr-3">
+      <h2><strong>Decor prefa</strong></h2>
+    </div>
+    <div class="col-6 d-flex align-items-center justify-content-around">
+      <a class="text-white" routerLink="/home"><span>Accueil</span></a>
+      <a class="text-white" routerLink="/services"><span>Nos services</span></a>
+      <a class="text-white" routerLink="/products"><span>Nos produits</span></a>
+      <!-- <a class="text-white" routerLink="/home" fragment="contact" *ngIf="!(user && user.role == 'admin')"><span>Contact</span></a> -->
+      <a class="text-white" routerLink="/orders" *ngIf="user && user.role == 'admin'"><span>Commandes</span></a>
+      <a class="text-white" routerLink="/blog"><span>Blog</span></a>
+      <a class="pt-color" routerLink="/products/cart" *ngIf="!(user && user.role == 'admin')">
+        <img src="assets/images/cart.png" alt="Logo panier" class="cart">
+        <span class="badge badge-danger">{{ getTotalItems() }}</span> 
+        <!-- <span class="my-badge rounded-lg p-1">{{cartItemsQty}}</span> -->
+      </a>
+      <a class="btn bck-secondary" routerLink="/login" *ngIf="!user">Connexion</a>
+      <div class="dd" *ngIf="user">
+        <a href="#" class="text-white">
+          <img src="assets/images/profile.png" alt="">&nbsp;
+          <span>{{ user.firstName }}</span>
+        </a>
+        <div class="dropdown-content rounded-lg">
+          <div class="mb-2"><a routerLink="/">Profil</a></div>
+          <a class="btn btn-danger" href="/home" (click)="logout()">Déconnexion</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
