@@ -61,6 +61,10 @@ export class CartComponent implements OnInit {
 
   order() {
     this.loading = true;
+    if (!this.user) {
+      Notify.failure("Vous devez vous connecter pour effectuer une commande !");
+      return;
+    }
     let order: Order = {
       reference: Date.now().toString(),
       clientId: this.user._id,
