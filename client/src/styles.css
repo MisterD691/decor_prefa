@@ -115,5 +115,6 @@ p {
 
 .img-prod {
   height: 250px;
+  max-width: 400px;
 }
 
