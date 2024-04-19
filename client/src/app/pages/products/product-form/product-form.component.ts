@@ -19,6 +19,7 @@ export class ProductFormComponent implements OnInit {
     price: 0,
     categoryId: "",
     quantity: 0,
+    picture: ""
   };
   public categories: Category[] = [];
   protected config = {
@@ -53,6 +54,18 @@ export class ProductFormComponent implements OnInit {
         this.categories = res.datas;
       }
     });
+  }
+
+  fileChangeEvent(event: any): void {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      const base64string = reader.result as string;
+      this.product.picture = base64string;
+    }
+    if (file) {
+      reader.readAsDataURL(file);
+    }
   }
 
   saveProduct(): any {

@@ -41,9 +41,47 @@
         <div class="col-1"></div>
         <div class="col-5">
           <div class="d-flex justify-content-center">
-            <img alt="Image produit" src="assets/images/logo.png" width="350px">
+            <img alt="Image produit" [src]="product.picture" width="350px" *ngIf="product.picture">
+            <!-- <div class="col-sm-1">
+              <div
+                class="gallery-container"
+                *ngIf="otherInfo.presentationPic || currentUser.picture"
+              >
+                <a class="gallery-item" href="javascript:">
+                  <img
+                    *ngIf="
+                      otherInfo.presentationPic ||
+                      (currentUser.picture !== '' &&
+                        currentUser.picture === otherInfo.presentationPic)
+                    "
+                    class="w-35 round"
+                    src="{{ otherInfo.presentationPic }}"
+                    alt="Image de présentation"
+                  />
+                  <img
+                    *ngIf="
+                      !otherInfo.presentationPic &&
+                      currentUser.picture !== null &&
+                      currentUser.picture !== otherInfo.presentationPic
+                    "
+                    class="w-35 round"
+                    src="{{ currentUser.picture }}"
+                    alt="Image de présentation"
+                  />
+                </a>
+              </div>
+            </div> -->
           </div>
-          <div class="mt-2 d-flex justify-content-center"><a class="color-primary">Charger la photo</a></div>
+          <div class="mt-2">Charger la photo
+            <input
+              type="file"
+              #imageInput
+              accept="image/*"
+              (change)="fileChangeEvent($event)"
+              class="form-control"
+            />
+            <!-- <a class="color-primary">Charger la photo</a> -->
+          </div>
         </div>
       </div>
     </div>
