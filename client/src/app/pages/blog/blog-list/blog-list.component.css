@@ -5,3 +5,10 @@
   -webkit-box-orient: vertical;
   min-height: 80px;
 }
+
+.cat {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1; 
+  -webkit-box-orient: vertical;
+}
