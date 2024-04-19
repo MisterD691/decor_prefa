@@ -16,7 +16,7 @@
       <!-- Products list -->
       <div class="row" *ngIf="role !== 'admin'">
         <div class="col-4" *ngFor="let art of articles | paginate: { itemsPerPage: 9, currentPage: p }">
-          <div class="card mb-5 shadow">
+          <div class="card mb-5 point">
             <img class="card-img-top img-prod" [src]="art.picture" *ngIf="art.picture" alt="Card image cap">
             <img class="card-img-top img-prod" src="assets/images/logo.png" *ngIf="!art.picture" alt="Card image cap">
             <div class="card-body">

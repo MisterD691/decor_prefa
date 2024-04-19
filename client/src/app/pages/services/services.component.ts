@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-services',
@@ -13,6 +14,10 @@ export class ServicesComponent implements OnInit {
 
   ngOnInit(): void {
     //
+  }
+
+  ngOnDestroy(): void {
+    $(window).unbind("scroll");
   }
 
 }
