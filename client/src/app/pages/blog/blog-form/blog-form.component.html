@@ -1,1 +1,54 @@
-<p>blog-form works!</p>
+<div class="body">
+  <app-header [isBig]="false"></app-header>
+  
+  <div class="container-fluid py-5">
+    <div class="container">
+      <h3 class="my-4 color-primary">
+        <strong>Ajouter nouvel article</strong>
+      </h3>
+      <div class="row">
+        <div class="col-6">
+          <form>
+            <div class="row">
+              <div class="form-group col-12 mb-3">
+                <label for="title">Titre</label>
+                <input type="text" class="form-control" name="title" [(ngModel)]="article.title" placeholder="Titre" required>
+              </div>
+              <div class="form-group col-12 mb-3">
+                <label for="description">Contenu</label>
+                <textarea name="content" id="content" rows="8" name="content" [(ngModel)]="article.content"  class="form-control" placeholder="Contenu..." required></textarea>
+              </div>
+              <div class="form-group col-12">
+                <button type="button" class="btn bck-primary btn-block" (click)="saveArticle()">Enregistrer</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-5">
+          <div class="d-flex justify-content-center">
+            <img alt="Image produit" [src]="article.picture" width="350px" *ngIf="article.picture">
+          </div>
+          <div class="mt-2">Charger la photo
+            <input
+              type="file"
+              #imageInput
+              accept="image/*"
+              (change)="fileChangeEvent($event)"
+              class="form-control"
+            />
+            <!-- <a class="color-primary">Charger la photo</a> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<app-footer></app-footer>
+
+<ngx-loading
+    [show]="loading"
+    [config]="config"
+  >
+</ngx-loading>

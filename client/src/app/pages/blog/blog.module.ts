@@ -5,6 +5,9 @@ import { BlogFormComponent } from './blog-form/blog-form.component';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
 import { BlogListComponent } from './blog-list/blog-list.component';
 import { BlogRoutingModule } from './blog-routing.module';
+import { ComponentsModule } from 'src/app/components/components.module';
+import { FormsModule } from '@angular/forms';
+import { NgxLoadingModule } from 'ngx-loading';
 
 
 
@@ -17,7 +20,10 @@ import { BlogRoutingModule } from './blog-routing.module';
   ],
   imports: [
     CommonModule,
-    BlogRoutingModule
+    ComponentsModule,
+    BlogRoutingModule,
+    FormsModule,
+    NgxLoadingModule.forRoot({})
   ]
 })
 export class BlogModule { }

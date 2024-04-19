@@ -4,4 +4,5 @@ export interface Article {
   content: string;
   picture?: string;
   createdAt?: Date;
+  updatedAt?: Date;
 }
