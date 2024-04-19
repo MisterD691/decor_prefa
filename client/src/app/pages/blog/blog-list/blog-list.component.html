@@ -22,7 +22,7 @@
             <div class="card-body">
               <h5 class="card-title cat">{{ art.title }}</h5>
               <p class="card-text text">{{ art.content }}</p>
-              <p class="card-text text d-flex justify-content-between">
+              <p class="card-text d-flex justify-content-between">
                 <span>{{ art.updatedAt | date: "dd/MM/YYYY à HH:mm" }}</span>
                 <button class="btn btn-info mr-3" (click)="selectArticle(art)">
                   <img src="assets/images/detail.png" alt="detail" class="ico">
