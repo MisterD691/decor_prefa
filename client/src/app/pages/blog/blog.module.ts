@@ -9,8 +9,6 @@ import { ComponentsModule } from 'src/app/components/components.module';
 import { FormsModule } from '@angular/forms';
 import { NgxLoadingModule } from 'ngx-loading';
 
-
-
 @NgModule({
   declarations: [
     BlogComponent,

@@ -17,9 +17,8 @@
       <div class="row" *ngIf="role !== 'admin'">
         <div class="col-4" *ngFor="let art of articles">
           <div class="card mb-5 shadow">
-            <img class="card-img-top" [src]="art.picture" *ngIf="art.picture" alt="Card image cap">
-            <img class="card-img-top" src="" *ngIf="!art.picture" alt="Card image cap">
-            <img class="card-img-top" src="assets/images/logo.png" *ngIf="!art.picture" alt="Card image cap">
+            <img class="card-img-top img-prod" [src]="art.picture" *ngIf="art.picture" alt="Card image cap">
+            <img class="card-img-top img-prod" src="assets/images/logo.png" *ngIf="!art.picture" alt="Card image cap">
             <div class="card-body">
               <h5 class="card-title cat">{{ art.title }}</h5>
               <p class="card-text text">{{ art.content }}</p>
