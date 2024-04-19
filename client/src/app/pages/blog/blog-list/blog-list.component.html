@@ -71,39 +71,31 @@
       <br><br><br>
 
       <!-- Details produit -->
-      <!-- <div *ngIf="selectedProd">
+      <div *ngIf="selectedArticle">
         <h3 class="mb-4 color-primary"><strong>Détails produit</strong></h3>
         <div class="row">
-          <div class="col-4 mb-3">
+          <div class="col-6 mb-3">
             <h6>Image</h6>
-            <img class="img-prod" src="{{ selectedProd.picture }}" alt="Product image">
+            <img class="img-prod" src="{{ selectedArticle.picture }}" alt="Product image">
           </div>
-          <div class="col-8">
+          <div class="col-6">
             <div class="row">
-              <div class="col-4 mb-3">
-                <span>Catégorie</span>
-                <h5>{{ selectedProd.category.label }}</h5>
-              </div>
-              <div class="col-4 mb-3">
+              <div class="col-12 mb-3">
                 <span>Titre</span>
-                <h5>{{ selectedProd.title }}</h5>
+                <h5>{{ selectedArticle.title }}</h5>
               </div>
-              <div class="col-4 mb-3">
-                <span>Prix unitaire</span>
-                <h5>{{ selectedProd.price }} FCFA</h5>
-              </div>
-              <div class="col-4 mb-3">
-                <span>Quantité stock</span>
-                <h5>{{ selectedProd.quantity }}</h5>
+              <div class="col-12 mb-3">
+                <span>Contenu</span>
+                <h5>{{ selectedArticle.content }}</h5>
               </div>
               <div class="col-12">
-                <span>Description</span>
-                <p>{{ selectedProd.description }}</p>
+                <span>Date publication</span>
+                <h5>{{ selectedArticle.updatedAt | date: "dd/MM/YYYY à HH:mm" }}</h5>
               </div>
             </div>
           </div>
         </div>
-      </div> -->
+      </div>
 
     </div>
   </div>
