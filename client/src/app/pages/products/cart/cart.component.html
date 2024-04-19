@@ -8,7 +8,8 @@
         <!-- Produits -->
         <div class="col-7">
           <div class="row border-bottom pb-4 mb-4" *ngFor="let ci of cartItems">
-            <div class="col-4" style="background-image: url('assets/images/logo.png');">
+            <div class="col-4">
+              <img src="{{ci.product.picture}}" alt="Image produit" class="img-prod">
               <!-- <img alt="Image produit" src="assets/background/image-laptop.jpg" width="200px"> -->
             </div>
             <div class="col-8">
