@@ -15,14 +15,19 @@
       
       <!-- Products list -->
       <div class="row" *ngIf="role !== 'admin'">
-        <div class="col-4" *ngFor="let art of articles">
+        <div class="col-4" *ngFor="let art of articles | paginate: { itemsPerPage: 9, currentPage: p }">
           <div class="card mb-5 shadow">
             <img class="card-img-top img-prod" [src]="art.picture" *ngIf="art.picture" alt="Card image cap">
             <img class="card-img-top img-prod" src="assets/images/logo.png" *ngIf="!art.picture" alt="Card image cap">
             <div class="card-body">
               <h5 class="card-title cat">{{ art.title }}</h5>
               <p class="card-text text">{{ art.content }}</p>
-              <p class="card-text text">{{ art.updatedAt | date: "dd/MM/YYYY à HH:mm" }}</p>
+              <p class="card-text text d-flex justify-content-between">
+                <span>{{ art.updatedAt | date: "dd/MM/YYYY à HH:mm" }}</span>
+                <button class="btn btn-info mr-3" (click)="selectArticle(art)">
+                  <img src="assets/images/detail.png" alt="detail" class="ico">
+                </button>
+              </p>
               <!-- <div class="d-flex justify-content-between mb-3">
                 <a class="btn btn-success" (click)="addToCart(p)">Ajouter au panier</a>
                 <strong> {{p.price}} FCFA</strong>
@@ -43,7 +48,7 @@
           </div>
 
           <div *ngIf="articles.length > 0">
-            <div class="row border shadow-sm mb-3 py-3 rounded-lg" *ngFor="let art of articles">
+            <div class="row border shadow-sm mb-3 py-3 rounded-lg" *ngFor="let art of articles | paginate: { itemsPerPage: 9, currentPage: p }">
               <div class="col-2 d-flex align-items-center">
                 <img class="card-img-top img-thumb" [src]="art.picture" *ngIf="art.picture" alt="Card image cap">
                 <img class="card-img-top img-thumb" src="" *ngIf="!art.picture" alt="Card image cap">
@@ -65,6 +70,12 @@
             </div>
           </div>
 
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-center">
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
         </div>
       </div>
 

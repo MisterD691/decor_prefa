@@ -20,7 +20,7 @@
       
       <!-- Products list -->
       <div class="row" *ngIf="role !== 'admin'">
-        <div class="col-4" *ngFor="let p of products">
+        <div class="col-4" *ngFor="let p of products | paginate: { itemsPerPage: 9, currentPage: p }">
           <div class="card mb-5 shadow">
             <img class="card-img-top img-prod" src="{{ p.picture }}" *ngIf="p.picture" alt="Card image cap">
             <img class="card-img-top img-prod" src="assets/images/logo.png" *ngIf="!p.picture" alt="Card image cap">
@@ -49,7 +49,7 @@
           </div>
 
           <div *ngIf="products.length > 0">
-            <div class="row border shadow-sm mb-3 py-3 rounded-lg" *ngFor="let p of products">
+            <div class="row border shadow-sm mb-3 py-3 rounded-lg" *ngFor="let p of products | paginate: { itemsPerPage: 9, currentPage: p }">
               <div class="col-2 d-flex align-items-center">
                 <img class="img-thumb" [src]="p.picture" *ngIf="p.picture" alt="Product image">
                 <img src="" *ngIf="!p.picture" alt="Product image">
@@ -72,6 +72,12 @@
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-center">
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
         </div>
       </div>
 

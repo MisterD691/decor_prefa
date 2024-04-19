@@ -8,6 +8,7 @@ import { BlogRoutingModule } from './blog-routing.module';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { FormsModule } from '@angular/forms';
 import { NgxLoadingModule } from 'ngx-loading';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { NgxLoadingModule } from 'ngx-loading';
     ComponentsModule,
     BlogRoutingModule,
     FormsModule,
-    NgxLoadingModule.forRoot({})
+    NgxLoadingModule.forRoot({}),
+    NgxPaginationModule
   ]
 })
 export class BlogModule { }

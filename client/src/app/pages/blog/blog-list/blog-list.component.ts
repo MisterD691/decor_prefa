@@ -14,6 +14,7 @@ export class BlogListComponent {
   protected role: string = "";
   public loading: boolean = false;
   public selectedArticle: any;
+  p: number = 1;
 
   constructor(
     private articleService: ArticleService,

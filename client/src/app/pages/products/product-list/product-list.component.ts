@@ -20,6 +20,7 @@ export class ProductListComponent implements OnInit {
   protected role: string = "";
   public loading: boolean = false;
   public selectedProd: any;
+  p: number = 1;
 
   constructor(
     private productService: ProductService,
